@@ -8,9 +8,6 @@ class RectangleTest < Test::Unit::TestCase
     
     rectangle = Rectangle.new(length,height)
     
-    expected_area = 6
-    actual_area = rectangle.area
-    
-    assert_equal expected_area, actual_area
+    assert_equal 6, rectangle.area
   end
 end
