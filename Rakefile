@@ -1,5 +1,6 @@
 task :default => :test
 
 task :test do
-  ruby 'unit_tests.rb'
+  ruby 'Chance/unit_tests.rb'
+  ruby 'Rectangle/unit_tests.rb'
 end

@@ -2,19 +2,19 @@ require 'test/unit'
 require 'chance'
 
 class ChanceTest < Test::Unit::TestCase
-  def test_should_find_probability_of_flipping_heads_on_a_coin
-   sides_on_a_coin = 2
-    
-    chance = Chance.new(sides_on_a_coin)
-    
-    assert_equal 0.5, chance.find_probability
+  def test_should_happen    
+    assert_equal Chance.new(0.5), Chance.new(0.5)    
+    assert_equal Chance.new(0.25), Chance.new(0.25)
   end
   
-  def test_should_find_probability_of_not_getting_a_one_when_rolling_a_six_sided_die
-    sides_on_a_die = 6
-    
-    chance = Chance.new(sides_on_a_die)
-    
-    assert_equal 5.fdiv(6), chance.find_not_probability    # 5 / 6 = .833333
+  def test_should_not_happen
+    assert_equal Chance.new(0.5), Chance.new(0.5).not
+    assert_equal Chance.new(0.75), Chance.new(0.25).not
+  end 
+  
+  def test_should_not_be_equal
+    assert_not_equal Chance.new(0.25), nil
+    assert_not_equal Chance.new(0.25), "Not a chance object"
   end
+     
 end
