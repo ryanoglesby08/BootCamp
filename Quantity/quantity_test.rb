@@ -18,6 +18,7 @@ class QuantityTest < Test::Unit::TestCase
   def test_not_equals
     assert_not_equal get_quantity(9,"ft"), "string"
     assert_not_equal get_quantity(9,"ft"), nil
+    assert_not_equal get_quantity(9,"ft"), get_quantity(9,"apples")
   end
   
   def test_get_base_unit_amount

@@ -1,19 +1,19 @@
 class QuantityConversion
-  @@inches_per_foot = 12
-  @@feet_per_yard = 3
-  @@yards_per_mile = 1760
+  INCHES_PER_FOOT = 12
+  FEET_PER_YARD = 3
+  YARDS_PER_MILE = 1760
   
   def self.feet_to_inches(feet)
-    feet * @@inches_per_foot
+    feet * INCHES_PER_FOOT
   end
   
   def self.yards_to_inches(yards)
-    feet = yards * @@feet_per_yard
+    feet = yards * FEET_PER_YARD
     QuantityConversion.feet_to_inches(feet)
   end
   
   def self.miles_to_inches(miles)
-    yards = miles * @@yards_per_mile
+    yards = miles * YARDS_PER_MILE
     QuantityConversion.yards_to_inches(yards)
   end
   
