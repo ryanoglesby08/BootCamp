@@ -13,7 +13,7 @@ class Chance
     if other.nil? || !other.is_a?(Chance)
       return false
     end
-      
+    
     @probability == other.probability
   end
   
