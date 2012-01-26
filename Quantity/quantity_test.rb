@@ -30,9 +30,18 @@ class QuantityTest < Test::Unit::TestCase
   
   def test_should_throw_exception_for_type_mismatch
     assert_raise RuntimeError do
-      assert_equal get_quantity(9, Length.foot), get_quantity(9, Volume.teaspoon)
-      assert_equal get_quantity(9, Length.foot), Object.new
+       get_quantity(9, Length.foot)== get_quantity(9, Volume.teaspoon)
+     end
+    assert_raise RuntimeError do
+      get_quantity(9, Length.foot) == Object.new    
+    end
+    assert_raise RuntimeError do
+      get_quantity(2, Length.foot) + get_quantity(3, Volume.teaspoon)
     end
   end
   
+  def test_addition
+    assert_equal get_quantity(2, Length.inch), get_quantity(1, Length.inch) + get_quantity(1, Length.inch)
+    assert_equal get_quantity(2, Volume.teaspoon), get_quantity(1, Volume.teaspoon) + get_quantity(1, Volume.teaspoon)
+  end
 end
