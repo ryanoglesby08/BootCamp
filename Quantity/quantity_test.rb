@@ -2,6 +2,8 @@ require 'test/unit'
 require 'quantity'
 require 'length'
 require 'volume'
+require 'temperature'
+
 
 class QuantityTest < Test::Unit::TestCase  
   
@@ -20,6 +22,11 @@ class QuantityTest < Test::Unit::TestCase
     assert_equal get_quantity(1, Volume.tablespoon), get_quantity(3, Volume.teaspoon)
     assert_equal get_quantity(2, Volume.tablespoon), get_quantity(1, Volume.ounce)
     assert_equal get_quantity(8, Volume.ounce), get_quantity(1, Volume.cup)
+  end
+  
+  def test_temperature_equality
+    assert_equal get_quantity(212, Temperature.f), get_quantity(100, Temperature.c)
+    assert_equal get_quantity(32, Temperature.f), get_quantity(0, Temperature.c)
   end
   
   def test_not_equals
@@ -42,6 +49,7 @@ class QuantityTest < Test::Unit::TestCase
   
   def test_addition
     assert_equal get_quantity(2, Length.inch), get_quantity(1, Length.inch) + get_quantity(1, Length.inch)
+    assert_equal get_quantity(48, Length.inch), get_quantity(1, Length.foot) + get_quantity(1, Length.yard)
     assert_equal get_quantity(2, Volume.teaspoon), get_quantity(1, Volume.teaspoon) + get_quantity(1, Volume.teaspoon)
   end
 end

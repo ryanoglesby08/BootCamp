@@ -1,4 +1,8 @@
+require 'base_unit'
+
 class Volume
+  include BaseUnit
+  
   attr_reader :teaspoons
   
   def initialize(teaspoons)
@@ -21,8 +25,13 @@ class Volume
     Volume.new(48)
   end
   
-  def base_units
-    @teaspoons
+  def base_unit
+    Volume.teaspoon
+  end 
+  
+  def calculate_amount_of_base_units(amount)
+    amount * @teaspoons
   end
+  
   
 end

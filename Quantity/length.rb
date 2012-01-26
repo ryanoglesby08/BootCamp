@@ -1,4 +1,8 @@
+require 'base_unit'
+
 class Length
+  include BaseUnit
+  
   attr_reader :inches
   
   def initialize(inches)
@@ -21,8 +25,13 @@ class Length
     Length.new(63360)
   end
   
-  def base_units
-    @inches
+  
+  def base_unit
+    Length.inch
+  end
+  
+  def calculate_amount_of_base_units(amount)
+    amount * @inches
   end
   
 end
