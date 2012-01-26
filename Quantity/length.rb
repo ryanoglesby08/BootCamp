@@ -1,19 +1,28 @@
-require 'quantity'
-require 'length_conversion'
-
-class Length < Quantity  
-  def initialize(amount,unit)
-    super(amount,unit)
+class Length
+  attr_accessor :inches
+  
+  def initialize(inches)
+    @inches = inches
   end
   
-  def get_base_unit_amount
-    case unit
-      when "in" then @amount
-      when "ft" then LengthConversion.feet_to_inches(@amount)
-      when "yd" then LengthConversion.yards_to_inches(@amount)
-      when "mi" then LengthConversion.miles_to_inches(@amount)
-      else nil
-    end
+  def self.inch
+    Length.new(1)
+  end
+  
+  def self.foot
+    Length.new(12)
+  end
+  
+  def self.yard
+    Length.new(36)
+  end
+  
+  def self.mile
+    Length.new(63360)
+  end
+  
+  def base_units
+    @inches
   end
   
 end

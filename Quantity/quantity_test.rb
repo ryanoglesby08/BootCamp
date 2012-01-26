@@ -4,49 +4,35 @@ require 'length'
 require 'volume'
 
 class QuantityTest < Test::Unit::TestCase  
-  def get_length(amount,unit)
-    Length.new(amount,unit)
-  end
   
-  def get_volume(amount,unit)
-    Volume.new(amount,unit)
+  def get_quantity(amount, unit)
+    Quantity.new(amount,unit)
   end
   
   def test_equality
-    assert_equal get_length(9,"in"), get_length(9,"in")
-    assert_equal get_length(9,"in"), get_length(9.0,"in")
+    assert_equal get_quantity(9, Length.inch), get_quantity(9, Length.inch)
+    assert_equal get_quantity(9, Length.inch), get_quantity(9.0, Length.inch)
         
-    assert_equal get_length(12,"in"), get_length(1,"ft")
-    assert_equal get_length(3, "ft"), get_length(1, "yd")
-    assert_equal get_length(1760, "yd"), get_length(1, "mi")
+    assert_equal get_quantity(12, Length.inch), get_quantity(1, Length.foot)
+    assert_equal get_quantity(3, Length.foot), get_quantity(1, Length.yard)
+    assert_equal get_quantity(1760, Length.yard), get_quantity(1, Length.mile)
     
-    assert_equal get_volume(1, "tbsp"), get_volume(3, "tsp")
-    assert_equal get_volume(2, "tbsp"), get_volume(1, "oz")
-    assert_equal get_volume(8, "oz"), get_volume(1, "cups")
+    assert_equal get_quantity(1, Volume.tablespoon), get_quantity(3, Volume.teaspoon)
+    assert_equal get_quantity(2, Volume.tablespoon), get_quantity(1, Volume.ounce)
+    assert_equal get_quantity(8, Volume.ounce), get_quantity(1, Volume.cup)
   end
   
   def test_not_equals
-    assert_not_equal get_length(9,"ft"), get_length(12, "yd")
+    assert_not_equal get_quantity(9, Length.foot), get_quantity(12, Length.yard)
     
-    assert_not_equal get_volume(9,"tsp"), get_volume(12,"cups")
+    assert_not_equal get_quantity(9, Volume.teaspoon), get_quantity(12, Volume.cup)
   end
   
   def test_should_throw_exception_for_type_mismatch
     assert_raise RuntimeError do
-      assert_equal get_length(9,"ft"), get_volume(9,"tsp")
+      assert_equal get_quantity(9, Length.foot), get_quantity(9, Volume.teaspoon)
+      assert_equal get_quantity(9, Length.foot), Object.new
     end
-  end
-  
-  def test_get_base_unit_amount
-    assert_equal 5, get_length(5,"in").get_base_unit_amount
-    assert_equal 24, get_length(2, "ft").get_base_unit_amount
-    assert_equal 36, get_length(1, "yd").get_base_unit_amount
-    assert_equal 63360, get_length(1, "mi").get_base_unit_amount
-    
-    assert_equal 5, get_volume(5,"tsp").get_base_unit_amount
-    assert_equal 6, get_volume(2, "tbsp").get_base_unit_amount
-    assert_equal 6, get_volume(1, "oz").get_base_unit_amount
-    assert_equal 48, get_volume(1, "cups").get_base_unit_amount
   end
   
 end

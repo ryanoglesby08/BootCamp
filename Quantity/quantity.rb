@@ -1,21 +1,17 @@
 class Quantity
-  attr_accessor :amount, :unit
+  attr_accessor :amount_of_base_unit, :quantity_type
   
   def initialize(amount,unit)
-    @amount = amount
-    @unit = unit
+    @amount_of_base_unit = amount * unit.base_units
+    @quantity_type = unit.class
   end
   
   def ==(other)
-    if !other.instance_of?(self.class)
+    if self.quantity_type != other.quantity_type
       raise "Incompatible types.  Cannot compare."
     end
     
-    if @unit == other.unit
-      return @amount == other.amount
-    end
-            
-    get_base_unit_amount == other.get_base_unit_amount
+    self.amount_of_base_unit == other.amount_of_base_unit
   end
   
 end

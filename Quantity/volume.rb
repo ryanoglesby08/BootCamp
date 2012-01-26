@@ -1,19 +1,28 @@
-require 'quantity'
-require 'volume_conversion'
-
-class Volume < Quantity
-  def initialize(amount,unit)
-    super(amount,unit)
+class Volume
+  attr_accessor :teaspoons
+  
+  def initialize(teaspoons)
+    @teaspoons = teaspoons
   end
   
-  def get_base_unit_amount
-    case unit
-      when "tsp"  then @amount
-      when "tbsp" then VolumeConversion.tbsp_to_tsp(@amount)
-      when "oz"   then VolumeConversion.oz_to_tsp(@amount)
-      when "cups" then VolumeConversion.cups_to_tsp(@amount)
-      else nil
-    end
+  def self.teaspoon
+    Volume.new(1)
+  end
+  
+  def self.tablespoon
+    Volume.new(3)
+  end
+  
+  def self.ounce
+    Volume.new(6)
+  end
+  
+  def self.cup
+    Volume.new(48)
+  end
+  
+  def base_units
+    @teaspoons
   end
   
 end
