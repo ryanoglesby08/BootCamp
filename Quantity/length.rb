@@ -25,7 +25,6 @@ class Length
     Length.new(63360)
   end
   
-  
   def base_unit
     Length.inch
   end

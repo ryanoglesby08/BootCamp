@@ -33,5 +33,4 @@ class Volume
     amount * @teaspoons
   end
   
-  
 end

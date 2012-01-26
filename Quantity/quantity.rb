@@ -12,14 +12,7 @@ class Quantity
     self.amount_of_base_units == other.amount_of_base_units
   end
   
-  def +(other)
-    validate_unit_type(other)
-
-    Quantity.new(self.amount_of_base_units + other.amount_of_base_units, @unit.base_unit)
-  end
-  
   private
-  
   
   def validate_unit_type(other)
     if !other.is_a?(Quantity) || self.unit.class != other.unit.class
