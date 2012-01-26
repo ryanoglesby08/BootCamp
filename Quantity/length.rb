@@ -1,5 +1,5 @@
 class Length
-  attr_accessor :inches
+  attr_reader :inches
   
   def initialize(inches)
     @inches = inches

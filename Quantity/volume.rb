@@ -1,5 +1,5 @@
 class Volume
-  attr_accessor :teaspoons
+  attr_reader :teaspoons
   
   def initialize(teaspoons)
     @teaspoons = teaspoons
