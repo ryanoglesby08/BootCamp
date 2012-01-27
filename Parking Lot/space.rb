@@ -9,7 +9,7 @@ class Space
   end
   
   def contains?(car)
-    return false unless @car.name == car.name
+    return false unless @car == car
     return true
   end
   

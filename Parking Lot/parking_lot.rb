@@ -1,14 +1,9 @@
 class ParkingLot
-  def initialize
-    @spaces = [Space.new, Space.new]
-  end
-  
-  def is_full?
-    @spaces.each do |space|
-      return false if space.is_empty?
+  def initialize(size)
+    @spaces = []
+    size.times do |index|
+      @spaces[index] = Space.new
     end
-    
-    return true
   end
   
   def park_car(car)
@@ -32,6 +27,15 @@ class ParkingLot
     end
     
     raise "That car is not parked in this lot!"
+  end
+  
+  private
+  def is_full?
+    @spaces.each do |space|
+      return false if space.is_empty?
+    end
+    
+    return true
   end
   
 end
