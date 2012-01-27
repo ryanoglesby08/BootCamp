@@ -1,6 +1,5 @@
 require 'test/unit'
 require 'space'
-require 'car'
 
 class SpaceTest < Test::Unit::TestCase
   def test_new_space_is_empty

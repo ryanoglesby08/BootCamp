@@ -1,5 +1,3 @@
-require 'space'
-require 'car'
 require 'parking_lot'
 require 'test/unit'
 

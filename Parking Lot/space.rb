@@ -1,3 +1,5 @@
+require 'car'
+
 class Space
   
   def initialize
